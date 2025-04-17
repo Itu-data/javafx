@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.vehiclemanagement.Booking">
+
+    <center>
+        <VBox spacing="20" alignment="TOP_CENTER" style="-fx-background-color: #ecf0f1; -fx-padding: 30;">
+
+            <!-- Page Title -->
+            <Label text="Manage Bookings"
+                   style="-fx-font-size: 24px; -fx-font-weight: bold; -fx-text-fill: #2c3e50;"/>
+
+            <!-- Booking Form -->
+            <GridPane hgap="15" vgap="15" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10;">
+                <columnConstraints>
+                    <ColumnConstraints halignment="RIGHT" minWidth="120"/>
+                    <ColumnConstraints halignment="LEFT" minWidth="250"/>
+                </columnConstraints>
+
+                <!-- Customer Name -->
+                <Label text="Customer Name:" GridPane.rowIndex="0" GridPane.columnIndex="0"
+                       style="-fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
+                <TextField fx:id="customerNameField" promptText="Enter customer's full name"
+                           GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                <!-- Vehicle Model -->
+                <Label text="Vehicle Model:" GridPane.rowIndex="1" GridPane.columnIndex="0"
+                       style="-fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
+                <TextField fx:id="vehicleModelField" promptText="Enter vehicle model"
+                           GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                <!-- Rental Start Date -->
+                <Label text="Rental Start Date:" GridPane.rowIndex="2" GridPane.columnIndex="0"
+                       style="-fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
+                <DatePicker fx:id="rentalStartDatePicker" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                <!-- Rental End Date -->
+                <Label text="Rental End Date:" GridPane.rowIndex="3" GridPane.columnIndex="0"
+                       style="-fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
+                <DatePicker fx:id="rentalEndDatePicker" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                <!-- Booking Status -->
+                <Label text="Booking Status:" GridPane.rowIndex="4" GridPane.columnIndex="0"
+                       style="-fx-font-size: 14px; -fx-text-fill: #2c3e50;"/>
+                <ComboBox fx:id="bookingStatusComboBox" GridPane.rowIndex="4" GridPane.columnIndex="1">
+                    <items>
+                        <FXCollections fx:factory="observableArrayList">
+                            <String fx:value="Pending"/>
+                            <String fx:value="Confirmed"/>
+                            <String fx:value="Cancelled"/>
+                            <String fx:value="Completed"/>
+                        </FXCollections>
+                    </items>
+                </ComboBox>
+
+                <!-- Buttons -->
+                <HBox spacing="10" alignment="CENTER" GridPane.rowIndex="5" GridPane.columnIndex="1">
+                    <Button text="Save Booking" onAction="#handleSaveBooking"
+                            style="-fx-background-color: #3498db; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8px; -fx-padding: 8 20;"/>
+                    <Button text="Update Booking" onAction="#handleUpdateBooking"
+                            style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8px; -fx-padding: 8 20;"/>
+                    <Button text="Cancel Booking" onAction="#handleCancelBooking"
+                            style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 8px; -fx-padding: 8 20;"/>
+                </HBox>
+
+            </GridPane>
+
+            <!-- Booking List Table -->
+            <TableView fx:id="bookingTable" prefHeight="300" style="-fx-background-color: white; -fx-background-radius: 10;">
+                <columns>
+                    <TableColumn fx:id="customerNameColumn" text="Customer Name" prefWidth="150"/>
+                    <TableColumn fx:id="vehicleModelColumn" text="Vehicle Model" prefWidth="150"/>
+                    <TableColumn fx:id="startDateColumn" text="Start Date" prefWidth="100"/>
+                    <TableColumn fx:id="endDateColumn" text="End Date" prefWidth="100"/>
+                    <TableColumn fx:id="statusColumn" text="Status" prefWidth="100"/>
+                </columns>
+            </TableView>
+
+        </VBox>
+    </center>
+
+</BorderPane>
