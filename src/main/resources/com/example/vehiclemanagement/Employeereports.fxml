@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
+            fx:controller="com.example.vehiclemanagement.EmployeeReportsController">
+
+    <!-- Top Title -->
+    <top>
+        <HBox alignment="CENTER" style="-fx-background-color: #34495e; -fx-padding: 20;">
+            <Label text="Employee Reports" style="-fx-text-fill: white; -fx-font-size: 26px; -fx-font-weight: bold;"/>
+        </HBox>
+    </top>
+
+    <!-- Center Table -->
+    <center>
+        <VBox spacing="20" alignment="CENTER" style="-fx-background-color: #ecf0f1; -fx-padding: 30;">
+            <TableView fx:id="employeeReportTable" prefWidth="800" prefHeight="400" style="-fx-font-size: 14px;">
+
+                <columns>
+                    <TableColumn fx:id="employeeIdColumn" text="Employee ID" prefWidth="100"/>
+                    <TableColumn fx:id="employeeNameColumn" text="Employee Name" prefWidth="200"/>
+                    <TableColumn fx:id="positionColumn" text="Position" prefWidth="150"/>
+                    <TableColumn fx:id="salaryColumn" text="Salary" prefWidth="100"/>
+                    <TableColumn fx:id="hireDateColumn" text="Hire Date" prefWidth="150"/>
+                </columns>
+
+            </TableView>
+
+            <Button text="Export Report" onAction="#handleExportReport"
+                    style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 10px; -fx-padding: 10 20;"/>
+        </VBox>
+    </center>
+
+    <!-- Bottom Footer -->
+    <bottom>
+        <HBox alignment="CENTER" style="-fx-background-color: #34495e; -fx-padding: 10;">
+            <Label text="© 2025 Mohapi Car Rentals. All rights reserved." style="-fx-text-fill: white; -fx-font-size: 12px;"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
