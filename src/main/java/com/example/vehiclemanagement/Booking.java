@@ -3,6 +3,8 @@ package com.example.vehiclemanagement;
 import javafx.beans.property.*;
 import javafx.event.ActionEvent;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.time.LocalDate;
 
 public class Booking{
@@ -42,7 +44,30 @@ public class Booking{
     public StringProperty bookingStatusProperty() { return bookingStatus; }
 
     public void handleSaveBooking(ActionEvent actionEvent) {
+        try {
+            Connection connectDB = DatabaseConnection.getConnection();
+
+            String insertBooking = "INSERT INTO bookings (customer_name, vehicle_model, rental_start_date, rental_end_date, booking_status) VALUES (?, ?, ?, ?, ?)";
+
+            PreparedStatement preparedStatement = connectDB.prepareStatement(insertBooking);
+            preparedStatement.setString(1, getCustomerName());
+            preparedStatement.setString(2, getVehicleModel());
+            preparedStatement.setDate(3, java.sql.Date.valueOf(getRentalStartDate()));
+            preparedStatement.setDate(4, java.sql.Date.valueOf(getRentalEndDate()));
+            preparedStatement.setString(5, getBookingStatus());
+
+            int rowsAffected = preparedStatement.executeUpdate();
+            if (rowsAffected > 0) {
+                System.out.println("Booking saved successfully!");
+            } else {
+                System.out.println("Failed to save booking.");
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
 
     public void handleUpdateBooking(ActionEvent actionEvent) {
     }

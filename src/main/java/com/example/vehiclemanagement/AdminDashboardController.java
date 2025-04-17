@@ -7,16 +7,35 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+// other imports you need
+
+
+import java.awt.*;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.Objects;
 
 public class AdminDashboardController {
 
     private Stage stage;
     private Scene scene;
+
+    @FXML
+    private Label availableCarsLabel;
+
+    @FXML
+    private Label rentedCarsLabel;
+
+    @FXML
+    private Label maintenanceCarsLabel;
 
     @FXML
     void handleManageProfile(ActionEvent event) {
@@ -108,6 +127,7 @@ public class AdminDashboardController {
             e.printStackTrace();
         }
     }
+    
 
     @FXML
     public void hoverButton(MouseEvent event) {
@@ -122,12 +142,46 @@ public class AdminDashboardController {
     }
 
     private void showFeatureNotImplementedYet() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "This feature is coming soon!", javafx.scene.control.ButtonType.OK);
+        Alert alert = new Alert(Alert.AlertType.INFORMATION, "This feature is coming soon!", ButtonType.OK);
         alert.showAndWait();
     }
 
     private void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR, message, javafx.scene.control.ButtonType.OK);
+        Alert alert = new Alert(Alert.AlertType.ERROR, message, ButtonType.OK);
         alert.showAndWait();
     }
+    private void loadDashboardData() {
+        try {
+            Connection connectDB = DatabaseConnection.getConnection();
+
+            // Query Available Cars
+            String availableQuery = "SELECT COUNT(*) FROM bookings WHERE booking_status = 'Available'";
+            PreparedStatement availableStmt = connectDB.prepareStatement(availableQuery);
+            ResultSet availableResult = availableStmt.executeQuery();
+            if (availableResult.next()) {
+                Label availableCarsLabel = null;
+                availableCarsLabel.setText(String.valueOf(availableResult.getInt(1)));
+            }
+
+            // Query Rented Cars
+            String rentedQuery = "SELECT COUNT(*) FROM bookings WHERE booking_status = 'Rented'";
+            PreparedStatement rentedStmt = connectDB.prepareStatement(rentedQuery);
+            ResultSet rentedResult = rentedStmt.executeQuery();
+            if (rentedResult.next()) {
+                rentedCarsLabel.setText(String.valueOf(rentedResult.getInt(1)));
+            }
+
+            // Query On Maintenance Cars
+            String maintenanceQuery = "SELECT COUNT(*) FROM bookings WHERE booking_status = 'Maintenance'";
+            PreparedStatement maintenanceStmt = connectDB.prepareStatement(maintenanceQuery);
+            ResultSet maintenanceResult = maintenanceStmt.executeQuery();
+            if (maintenanceResult.next()) {
+                maintenanceCarsLabel.setText(String.valueOf(maintenanceResult.getInt(1)));
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 }

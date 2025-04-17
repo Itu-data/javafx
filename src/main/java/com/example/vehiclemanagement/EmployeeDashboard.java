@@ -11,6 +11,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Objects;
 
 public class EmployeeDashboard {
 
@@ -34,8 +35,9 @@ public class EmployeeDashboard {
     @FXML
     private void handleManagePayments(ActionEvent event) {
 
+
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/vehiclemanagement/manage_payments.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/vehiclemanagement/Manage_payment.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -44,7 +46,6 @@ public class EmployeeDashboard {
             e.printStackTrace();
             showError("Failed to open Manage Profile page.");
         }
-
     }
 
     @FXML
