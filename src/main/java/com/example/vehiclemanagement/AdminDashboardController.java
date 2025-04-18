@@ -37,7 +37,7 @@ public class AdminDashboardController implements Initializable {
         try {
             connectDB = DatabaseConnection.getConnection();
 
-            String availableQuery = "SELECT COUNT(*) FROM bookings WHERE status = 'completed'";
+            String availableQuery = "SELECT COUNT(*) FROM vehicles WHERE AvailabilityStatus = 'Available'";
             PreparedStatement availableStmt = connectDB.prepareStatement(availableQuery);
             ResultSet availableResult = availableStmt.executeQuery();
             if (availableResult.next()) {
@@ -97,11 +97,11 @@ public class AdminDashboardController implements Initializable {
     @FXML
     private void handleLogout(ActionEvent event) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/vehiclemanagement/Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/vehiclemanagement/login.fxml"));
             Scene scene = new Scene(loader.load());
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             stage.setScene(scene);
-            stage.setTitle("Login");
+            stage.setTitle("login");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

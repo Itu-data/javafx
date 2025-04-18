@@ -92,7 +92,7 @@ public class Signup {
     private void handleBackToLoginAction(ActionEvent actionEvent) {
         try {
             // Load the login screen (assuming it's Login.fxml)
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/path/to/Login.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
             Scene loginScene = new Scene(loader.load());
 
             // Get the current window (Stage) and set the scene to the login screen
