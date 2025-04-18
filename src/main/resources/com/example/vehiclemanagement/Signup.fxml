@@ -10,9 +10,11 @@
 <?import javafx.collections.FXCollections?>
 
 <?import java.lang.String?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
 <VBox alignment="CENTER" spacing="15.0" xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
       fx:controller="com.example.vehiclemanagement.Signup"
-      prefWidth="500" prefHeight="400">
+      prefWidth="800" prefHeight="700">
     <padding>
         <Insets top="30" right="30" bottom="30" left="30"/>
     </padding>
@@ -32,6 +34,11 @@
             </FXCollections>
         </items>
     </ComboBox>
+    <ImageView fitWidth="800" fitHeight="700" pickOnBounds="true" preserveRatio="false">
+        <image>
+            <Image url="@logo.jpg" />
+        </image>
+    </ImageView>
 
     <Button text="Register" onAction="#handleRegisterAction"
             style="-fx-background-color: #4285F4; -fx-text-fill: white; -fx-font-weight: bold;" prefWidth="300"/>

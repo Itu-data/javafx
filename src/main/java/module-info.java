@@ -4,6 +4,7 @@ module com.example.vehiclemanagement {
     requires java.sql;
     requires mysql.connector.j;
     requires java.desktop;
+    requires itextpdf;
 
 
     opens com.example.vehiclemanagement to javafx.fxml;

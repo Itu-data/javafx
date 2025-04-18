@@ -18,14 +18,13 @@ public class EmployeeDashboard {
     @FXML
     private void handleManageBookings(ActionEvent event) {
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/vehiclemanagement/manageProfile.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/vehiclemanagement/Bookings.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
              Scene scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();
-            showError("Failed to open Manage Profile page.");
         }
     }
 
@@ -37,7 +36,7 @@ public class EmployeeDashboard {
 
 
         try {
-            Parent root = FXMLLoader.load(getClass().getResource("/com/example/vehiclemanagement/Manage_payment.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/com/example/vehiclemanagement/Payments.fxml"));
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -55,7 +54,7 @@ public class EmployeeDashboard {
 
     @FXML
     private void handleLogout(ActionEvent event) {
-        loadPage("/com/example/vehiclemanagement/Login.fxml", event, "Login");
+        loadPage("/com/example/vehiclemanagement/login.fxml", event, "Login");
     }
     private void loadPage(String fxmlPath, ActionEvent event, String title) {
         try {
@@ -63,7 +62,6 @@ public class EmployeeDashboard {
             Parent root = loader.load();
             Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
             Scene scene = new Scene(root);
-
             stage.setScene(scene);
             stage.setTitle(title);
             stage.show();

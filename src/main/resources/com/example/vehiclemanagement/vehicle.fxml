@@ -6,7 +6,7 @@
 
 <?import javafx.scene.image.ImageView?>
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.vehiclemanagement.Vehicle">
+            fx:controller="com.example.vehiclemanagement.VehicleManagementController" prefWidth="800" prefHeight="700">
 
     <!-- Header Section -->
     <top>
@@ -44,27 +44,50 @@
         </VBox>
     </left>
 
-    <!-- Main Content Section (Center) -->
-    <center>
-        <VBox spacing="20" alignment="CENTER">
-            <ImageView fx:id="topCustomerImage" fitWidth="600" fitHeight="600" preserveRatio="true"/>
-
-            <TableView fx:id="frequentCustomersTable" prefWidth="600" prefHeight="300">
-                <columns>
-                    <TableColumn fx:id="customerNameCol" text="Customer Name" prefWidth="200"/>
-                    <TableColumn fx:id="visitsCol" text="Visits" prefWidth="100"/>
-                </columns>
-            </TableView>
-        </VBox>
-    </center>
 
 
-    <!-- Optional Bottom Footer -->
-    <bottom>
-        <HBox alignment="CENTER" style="-fx-background-color: #2c3e50; -fx-padding: 10;">
-            <Label text="© 2025 Mohapi Car Rentals. All rights reserved."
-                   style="-fx-text-fill: white; -fx-font-size: 12px;"/>
-        </HBox>
-    </bottom>
 
-</BorderPane>
+        <!-- Top Title -->
+        <top>
+            <HBox alignment="CENTER" style="-fx-background-color: #34495e; -fx-padding: 20;">
+                <Label text="Vehicle Management Dashboard" style="-fx-text-fill: white; -fx-font-size: 26px; -fx-font-weight: bold;"/>
+            </HBox>
+        </top>
+
+        <!-- Main Content Section (Center) -->
+        <center>
+            <VBox spacing="20" alignment="CENTER" style="-fx-background-color: #ecf0f1; -fx-padding: 30;">
+
+                <!-- Vehicle Table -->
+                <TableView fx:id="vehicleTable" prefWidth="800" prefHeight="400">
+                    <columns>
+                        <TableColumn fx:id="vehicleIdCol" text="Vehicle ID" prefWidth="100"/>
+                        <TableColumn fx:id="brandCol" text="Brand" prefWidth="150"/>
+                        <TableColumn fx:id="modelCol" text="Model" prefWidth="150"/>
+                        <TableColumn fx:id="categoryCol" text="Category" prefWidth="150"/>
+                        <TableColumn fx:id="rentalPriceCol" text="Rental Price per Day" prefWidth="150"/>
+                        <TableColumn fx:id="availabilityCol" text="Availability" prefWidth="150"/>
+                    </columns>
+                </TableView>
+
+                <!-- Buttons for Vehicle Management Actions -->
+                <HBox spacing="20" alignment="CENTER">
+                    <Button text="Add Vehicle" onAction="#handleAddVehicle" style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 10px; -fx-padding: 10 20;"/>
+                    <Button text="Update Vehicle" onAction="#handleUpdateVehicle" style="-fx-background-color: #f39c12; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 10px; -fx-padding: 10 20;"/>
+                    <Button text="Delete Vehicle" onAction="#handleDeleteVehicle" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-size: 16px; -fx-background-radius: 10px; -fx-padding: 10 20;"/>
+                </HBox>
+            </VBox>
+        </center>
+    <HBox alignment="CENTER" style="-fx-background-color: #2c3e50; -fx-padding: 10;">
+        <Label text="© 2025 Mohapi Car Rentals. All rights reserved."
+               style="-fx-text-fill: white; -fx-font-size: 12px;"/>
+    </HBox>
+    </BorderPane>
+
+
+
+
+
+
+
+

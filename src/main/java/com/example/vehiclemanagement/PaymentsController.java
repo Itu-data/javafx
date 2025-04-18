@@ -19,7 +19,6 @@ import java.time.LocalDate;
 
 public class PaymentsController {
 
-    // ========== NAVIGATION HANDLERS ==========
 
     @FXML
     void handleManageProfile(ActionEvent event) {

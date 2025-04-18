@@ -1,112 +1,69 @@
 package com.example.vehiclemanagement;
 
-import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
+import javafx.beans.property.*;
 
-import java.io.IOException;
-import java.net.URL;
-import java.util.Objects;
-import java.util.ResourceBundle;
+public class Vehicle {
+    private IntegerProperty vehicleId;
+    private StringProperty brand;
+    private StringProperty model;
+    private StringProperty category;
+    private DoubleProperty rentalPricePerDay;
+    private StringProperty availabilityStatus;
 
-public class Vehicle implements Initializable {
-
-    @FXML
-    private ImageView topCustomerImage;
-
-    private Stage stage;
-    private Scene scene;
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
-        try {
-            // Load the image into the ImageView
-            Image image = new Image(Objects.requireNonNull(getClass().getResource("/com/example/vehiclemanagement/car.jpg")).toExternalForm());
-            topCustomerImage.setImage(image);
-        } catch (Exception e) {
-            System.out.println("Failed to load image: " + e.getMessage());
-        }
-
-        // TODO: Load frequent customers from the database
+    public Vehicle(int vehicleId, String brand, String model, String category, double rentalPricePerDay, String availabilityStatus) {
+        this.vehicleId = new SimpleIntegerProperty(vehicleId);
+        this.brand = new SimpleStringProperty(brand);
+        this.model = new SimpleStringProperty(model);
+        this.category = new SimpleStringProperty(category);
+        this.rentalPricePerDay = new SimpleDoubleProperty(rentalPricePerDay);
+        this.availabilityStatus = new SimpleStringProperty(availabilityStatus);
     }
 
-    @FXML
-    private void handleManageProfile(ActionEvent event) {
-        loadPage("/com/example/vehiclemanagement/manageProfile.fxml", "Manage Profile", event);
+    public int getVehicleId() {
+        return vehicleId.get();
     }
 
-    @FXML
-    private void handleVehicles(ActionEvent event) {
-        loadPage("/com/example/vehiclemanagement/vehicle.fxml", "Vehicles", event);
+    public IntegerProperty vehicleIdProperty() {
+        return vehicleId;
     }
 
-    @FXML
-    private void handleCustomers(ActionEvent event) {
-        loadPage("/com/example/vehiclemanagement/customer.fxml", "Customers", event);
+    public String getBrand() {
+        return brand.get();
     }
 
-    @FXML
-    private void handleBookings(ActionEvent event) {
-        showFeatureNotImplementedYet();
+    public StringProperty brandProperty() {
+        return brand;
     }
 
-    @FXML
-    private void handlePayments(ActionEvent event) {
-        showFeatureNotImplementedYet();
+    public String getModel() {
+        return model.get();
     }
 
-    @FXML
-    private void handleReports(ActionEvent event) {
-        showFeatureNotImplementedYet();
+    public StringProperty modelProperty() {
+        return model;
     }
 
-    @FXML
-    private void handleLogout(ActionEvent event) {
-        loadPage("/com/example/vehiclemanagement/Login.fxml", "Login", event);
+    public String getCategory() {
+        return category.get();
     }
 
-    private void loadPage(String fxmlPath, String title, ActionEvent event) {
-        try {
-            Parent root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource(fxmlPath)));
-            stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle(title);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-            showError("Failed to open " + title + " page.");
-        }
+    public StringProperty categoryProperty() {
+        return category;
     }
 
-    @FXML
-    public void hoverButton(MouseEvent event) {
-        Node node = (Node) event.getSource();
-        node.setStyle("-fx-background-color: #3d566e; -fx-text-fill: white; -fx-font-size: 16px; -fx-alignment: CENTER_LEFT; -fx-cursor: hand;");
+    public double getRentalPricePerDay() {
+        return rentalPricePerDay.get();
     }
 
-    @FXML
-    public void exitButton(MouseEvent event) {
-        Node node = (Node) event.getSource();
-        node.setStyle("-fx-background-color: transparent; -fx-text-fill: white; -fx-font-size: 16px; -fx-alignment: CENTER_LEFT; -fx-cursor: hand;");
+    public DoubleProperty rentalPricePerDayProperty() {
+        return rentalPricePerDay;
     }
 
-    private void showFeatureNotImplementedYet() {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION, "This feature is coming soon!", javafx.scene.control.ButtonType.OK);
-        alert.showAndWait();
+    public String getAvailabilityStatus() {
+        return availabilityStatus.get();
     }
 
-    private void showError(String message) {
-        Alert alert = new Alert(Alert.AlertType.ERROR, message, javafx.scene.control.ButtonType.OK);
-        alert.showAndWait();
+    public StringProperty availabilityStatusProperty() {
+        return availabilityStatus;
     }
 }

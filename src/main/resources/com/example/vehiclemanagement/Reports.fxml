@@ -13,7 +13,7 @@
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
             fx:controller="com.example.vehiclemanagement.Reports"
-            prefHeight="400.0" prefWidth="600.0">
+            prefWidth="800" prefHeight="700">
 
     <BorderPane>
 
@@ -94,22 +94,17 @@
                 </HBox>
 
                 <!-- Rentals Table -->
-                <VBox spacing="10" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(gaussian, gray, 10, 0.5, 0, 0);">
-                    <Label text="Recent Rentals" style="-fx-font-size: 20px; -fx-text-fill: #2c3e50; -fx-font-weight: bold;"/>
-                    <TableView fx:id="rentalsTable" prefHeight="200">
-                        <columns>
-                            <TableColumn text="Rental ID" fx:id="rentalIdCol"/>
-                            <TableColumn text="Customer Name" fx:id="customerNameCol"/>
-                            <TableColumn text="Vehicle" fx:id="vehicleNameCol"/>
-                            <TableColumn text="Start Date" fx:id="startDateCol"/>
-                            <TableColumn text="End Date" fx:id="endDateCol"/>
-                            <TableColumn text="Amount Paid" fx:id="amountPaidCol"/>
-                        </columns>
-                    </TableView>
-                </VBox>
+
 
             </VBox>
         </center>
+        <bottom>
+            <HBox alignment="CENTER" style="-fx-background-color: #2c3e50; -fx-padding: 10;">
+                <Label text="© 2025 Mohapi Car Rentals. All rights reserved."
+                       style="-fx-text-fill: white; -fx-font-size: 12px;"/>
+            </HBox>
+        </bottom>
+
 
     </BorderPane>
 

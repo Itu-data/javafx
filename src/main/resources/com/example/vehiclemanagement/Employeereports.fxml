@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.vehiclemanagement.EmployeeReportsController">
+            fx:controller="com.example.vehiclemanagement.EmployeeReportsController" prefWidth="800" prefHeight="700">
 
     <!-- Top Title -->
     <top>
@@ -18,13 +18,16 @@
         <VBox spacing="20" alignment="CENTER" style="-fx-background-color: #ecf0f1; -fx-padding: 30;">
             <TableView fx:id="employeeReportTable" prefWidth="800" prefHeight="400" style="-fx-font-size: 14px;">
 
-                <columns>
-                    <TableColumn fx:id="employeeIdColumn" text="Employee ID" prefWidth="100"/>
-                    <TableColumn fx:id="employeeNameColumn" text="Employee Name" prefWidth="200"/>
-                    <TableColumn fx:id="positionColumn" text="Position" prefWidth="150"/>
-                    <TableColumn fx:id="salaryColumn" text="Salary" prefWidth="100"/>
-                    <TableColumn fx:id="hireDateColumn" text="Hire Date" prefWidth="150"/>
-                </columns>
+                <TableView fx:id="paymentReportTable" prefWidth="800" prefHeight="400" style="-fx-font-size: 14px;">
+                    <columns>
+                        <TableColumn fx:id="customerNameColumn" text="Customer Name" prefWidth="150"/>
+                        <TableColumn fx:id="vehicleNameColumn" text="Vehicle Name" prefWidth="150"/>
+                        <TableColumn fx:id="amountPaidColumn" text="Amount Paid" prefWidth="100"/>
+                        <TableColumn fx:id="paymentDateColumn" text="Payment Date" prefWidth="150"/>
+                        <TableColumn fx:id="paymentMethodColumn" text="Payment Method" prefWidth="150"/>
+                    </columns>
+                </TableView>
+
 
             </TableView>
 

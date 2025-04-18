@@ -5,7 +5,7 @@
 <?import javafx.geometry.Insets?>
 
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.vehiclemanagement.CustomerManagement">
+            fx:controller="com.example.vehiclemanagement.CustomerManagement" prefWidth="800" prefHeight="800">
 
     <top>
         <HBox spacing="20" style="-fx-background-color: #2c3e50; -fx-padding: 15;">

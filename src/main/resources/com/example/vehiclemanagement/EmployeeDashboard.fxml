@@ -5,7 +5,7 @@
 <?import javafx.scene.image.*?>
 
 <BorderPane xmlns="http://javafx.com/javafx" xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.example.vehiclemanagement.EmployeeDashboard">
+            fx:controller="com.example.vehiclemanagement.EmployeeDashboard" prefWidth="800" prefHeight="700">
 
     <!-- Top Header -->
     <top>

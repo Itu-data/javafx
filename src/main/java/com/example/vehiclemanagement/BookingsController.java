@@ -86,7 +86,7 @@ public class BookingsController {
         }
 
         try {
-            String sql = "INSERT INTO bookings (customer_name, vehicle_model, rental_start_date, rental_end_date, booking_status) VALUES (?, ?, ?, ?, ?)";
+            String sql = "INSERT INTO bookings (customer_name, vehicle_model, rental_start_date, rental_end_date, status) VALUES (?, ?, ?, ?, ?)";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, customerName);
             statement.setString(2, vehicleModel);
@@ -114,7 +114,7 @@ public class BookingsController {
         }
 
         try {
-            String sql = "UPDATE bookings SET customer_name=?, vehicle_model=?, rental_start_date=?, rental_end_date=?, booking_status=? WHERE id=?";
+            String sql = "UPDATE bookings SET customer_name=?, vehicle_model=?, rental_start_date=?, rental_end_date=?, status=? WHERE id=?";
             PreparedStatement statement = connection.prepareStatement(sql);
             statement.setString(1, customerNameField.getText());
             statement.setString(2, vehicleModelField.getText());
@@ -172,7 +172,7 @@ public class BookingsController {
                         resultSet.getString("vehicle_model"),
                         resultSet.getDate("rental_start_date").toLocalDate(),
                         resultSet.getDate("rental_end_date").toLocalDate(),
-                        resultSet.getString("booking_status")
+                        resultSet.getString("status")
                 );
                 bookingList.add(booking);
             }
@@ -190,11 +190,19 @@ public class BookingsController {
     }
 
     private void showAlert(Alert.AlertType alertType, String title, String message) {
-        Alert alert = new Alert(alertType);
-        alert.setTitle(title);
-        alert.setHeaderText(null);
-        alert.setContentText(message);
-        alert.showAndWait();
+
+    }
+
+    public void handleLogout(ActionEvent actionEvent) {
+    }
+
+    public void handleBookingHistory(ActionEvent actionEvent) {
+    }
+
+    public void handleManagePayments(ActionEvent actionEvent) {
+    }
+
+    public void handleManageBookings(ActionEvent actionEvent) {
     }
 }
 
