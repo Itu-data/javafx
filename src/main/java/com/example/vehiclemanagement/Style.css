@@ -1,0 +1,75 @@
+/* Main root background */
+.root {
+    -fx-background-image: url("logo.jpg");
+    -fx-background-size: cover;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center center;
+    -fx-padding: 40px;
+    -fx-background-color: linear-gradient(to bottom right, #ffe0f0, #f3e5f5);
+    -fx-font-family: "Segoe UI", "Comic Sans MS", cursive;
+}
+
+/* Title styling with glow */
+.label.title-label {
+    -fx-text-fill: #6a1b9a;
+    -fx-font-size: 32px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, #ffb3ff, 12, 0.6, 0, 3);
+    -fx-alignment: center;
+}
+
+/* Label for Username & Password - now bold and cute */
+.label:not(.title-label) {
+    -fx-text-fill: #4a148c;
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-effect: dropshadow(gaussian, #fce4ec, 3, 0.3, 0, 1);
+}
+
+/* Input fields: text + password */
+.text-field, .password-field {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #ce93d8;
+    -fx-border-width: 2px;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-font-size: 16px;
+    -fx-padding: 10 14;
+    -fx-text-fill: #6a1b9a;
+    -fx-effect: dropshadow(gaussian, #f3e5f5, 4, 0.4, 0, 2);
+}
+
+.text-field:focused, .password-field:focused {
+    -fx-border-color: #ba68c8;
+    -fx-effect: dropshadow(gaussian, #ce93d8, 8, 0.6, 0, 0);
+}
+
+/* Button styling */
+.button {
+    -fx-background-color: linear-gradient(to right, #f48fb1, #ce93d8);
+    -fx-text-fill: white;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-radius: 25;
+    -fx-padding: 10 22;
+    -fx-cursor: hand;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.15), 3, 0.3, 0, 2);
+    -fx-font-family: "Segoe UI", "Comic Sans MS", cursive;
+}
+
+.button:hover {
+    -fx-background-color: linear-gradient(to right, #ff80ab, #d1c4e9);
+    -fx-scale-x: 1.05;
+    -fx-scale-y: 1.05;
+    -fx-effect: dropshadow(gaussian, #ffccff, 8, 0.4, 0, 1);
+}
+
+/* Optional VBox container if used */
+.vbox {
+    -fx-background-color: rgba(255, 255, 255, 0.8);
+    -fx-background-radius: 20;
+    -fx-padding: 30;
+    -fx-spacing: 20;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(gaussian, #e1bee7, 10, 0.3, 0, 2);
+}
